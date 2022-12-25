@@ -115,7 +115,10 @@ func redraw(delta = 0):
 					else:
 						_target_background = Color(1, 0, 0)
 				else:
-					_target_background = Color(1, 1, 1)
+					if global.delta:
+						_target_background = Color(1, 1, 1)
+					else:
+						_target_background = Color(0.6, 0.6, 0.6)
 		if ! _target_background == _background_end_color:
 			_background_start_color = $Background.modulate
 			_background_end_color = _target_background
