@@ -441,6 +441,8 @@ func clear_board():
 					blocks[a][b][c][d].queue_free()
 	if board:
 		board.queue_free()
+		if board.get_parent():
+			board.get_parent().remove_child(board)
 	blocks = []
 	paused = false
 	finished = false
