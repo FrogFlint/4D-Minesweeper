@@ -27,6 +27,7 @@ var minY = 600
 var winsizeX = 600
 var winsizeY = 600
 var save_on_exit = true
+var board_changed = false
 var locale = "en"
 var settings = preload("res://Settings.tscn")
 var settings_menu = settings.instance()
@@ -363,6 +364,10 @@ func _process(delta):
 		global.write_config()
 		settings_menu.update_ui()
 		global.resize()
+	if board_changed:
+		if global.save_on_exit:
+			global.save_game()
+		board_changed = false
 
 func sanitize_settings():
 	remaining = 1

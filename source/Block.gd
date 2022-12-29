@@ -211,8 +211,7 @@ func clicked():
 			if $Number.text == "0":
 				for i in neighbors:
 					global.blocks[i[0]][i[1]][i[2]][i[3]].clicked()
-		if global.save_on_exit:
-			global.save_game()
+		global.board_changed = true
 		_temp_changed = true
 	if _temp_changed:
 		set_process(true)
@@ -234,8 +233,7 @@ func flagged():
 		global.menu.update_remaining()
 		for i in neighbors:
 			global.blocks[i[0]][i[1]][i[2]][i[3]].change_delta(-1)
-		if global.save_on_exit:
-			global.save_game()
+		global.board_changed = true
 		_temp_changed = true
 	elif state == "flagged":
 		state = "covered"
@@ -243,8 +241,7 @@ func flagged():
 		global.menu.update_remaining()
 		for i in neighbors:
 			global.blocks[i[0]][i[1]][i[2]][i[3]].change_delta(1)
-		if global.save_on_exit:
-			global.save_game()
+		global.board_changed = true
 		_temp_changed = true
 	if _temp_changed:
 		set_process(true)
